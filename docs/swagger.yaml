@@ -1,0 +1,44 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Food Delivery API
+  description: API for a food delivery application
+basePath: /api
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /calculate-price:
+    post:
+      summary: Calculate total price for food delivery
+      parameters:
+        - in: body
+          name: body
+          description: Request body for price calculation
+          required: true
+          schema:
+            type: object
+            properties:
+              zone:
+                type: string
+              organization_id:
+                type: string
+              total_distance:
+                type: number
+              item_type:
+                type: string
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              total_price:
+                type: number
+        '400':
+          description: Invalid request body
+        '500':
+          description: Internal server error
